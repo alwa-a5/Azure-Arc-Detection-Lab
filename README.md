@@ -4,41 +4,9 @@
 
 # Network Topology
 
-<table>
-  <tr>
-    <td align="center" width="140">
-      <b>SSH Attempts</b><br>
-      <sub>Repeated failed logins</sub>
-    </td>
-    <td align="center">→</td>
-    <td align="center" width="170">
-      <img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/ubuntu.svg" alt="Ubuntu" width="48">
-      <img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/vmware.svg" alt="VMware" width="58"><br>
-      <b>Ubuntu VM</b><br>
-      <sub>VMware + Linux Syslog</sub>
-    </td>
-    <td align="center">→</td>
-    <td align="center" width="190">
-      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_Azure_HybridCompute/AzureArcCenter.svg" alt="Azure Arc" width="50">
-      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_Azure_Monitoring/DataCollectionRules.svg" alt="Data Collection Rule" width="50"><br>
-      <b>Azure Arc + AMA</b><br>
-      <sub>Connected Machine Agent + DCR</sub>
-    </td>
-    <td align="center">→</td>
-    <td align="center" width="160">
-      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_OperationsManagementSuite_Workspace/Workspace.svg" alt="Log Analytics Workspace" width="52"><br>
-      <b>Log Analytics</b><br>
-      <sub>Linux Syslog table</sub>
-    </td>
-    <td align="center">→</td>
-    <td align="center" width="190">
-      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_Azure_Security_Insights/SecurityInsightsDashboard.svg" alt="Microsoft Sentinel" width="50">
-      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_Azure_Security_Insights/Incident.svg" alt="Security incident" width="50"><br>
-      <b>Microsoft Sentinel</b><br>
-      <sub>KQL rule → alert + incident</sub>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <img src="https://kroki.io/plantuml/svg/eNqFVdtu2kAQffdXTNO-RdSGJOQihOKQ0ESFVgWSqFKlaFkPZsV6F-2uoaTqaz-gn9gv6dgmYIilWALsM2dmzoxnlkvrmHFpIr13QnGZRggtl85ZZI78iVauxpZodYK1pu_QJEIx2S5RpY619dNxqlxaxrnUaaTj1HdaS-svkiUzWCaw59SgH2bfHZ0kWr029pliMSaoXMELDe8zPhWqKhDpWjnBbUHt6XiDPGozs3PGK7yGyFMj3KpwGlImCk71eXYm1JwZlsCY8VlsdKqijpbawHIqHJbsEU5YKl2XWvWFJQihEUyW7HbKIr0UKoYJk3bHcy6g3jgpIUpHaHEOR2XQMDXLwaAEjoSTmOUcimeExlmlya0kwljLqMpaVPO-nl8lQldres-b0PXjStva-yi_SozQGL1cGxv5tW8cTQWfKbQWyn4GuWMqJr2_PICryp4Trk2EZjc8wOtqCqzQ36SnQRHKKDTUcQL6QokkTR5F5KZQPwu20C2KeOqgfh54vz2vF37_ej966t10R0-Du0-3I89l_YN8XKgeDsPhLVyZ1CGlNBzhGh2VIrSCHht73raugxbPNF6se9ZufdisU8vPTe0fqjVuZwFD5zCZO9vyxxloqZCLeqM9wDkyhxFNkpD0Q7snFJEye_sAmAXmHLWuKuvN-clxI6Cs61V9yQnwwmgGp8HpGTHWu7qj6j73gof-nqSHfsaFQ-gJlf6E4cqSqLKiRVKlJghOG50m5drf652k2y4fQtgP91J3tFIUmfqwdoYwpgUm7nVnsNMUw9_WUH1g7MghCmw4e2LK5YNjY4llBQTatyVsjp-drH3BjbZ64uDFvpf687cemJTC_vvzF0KJJmvBneIiIn5ZhV37e14xJlCrtbP3s0jyu6xN9Mnvc8HZV_60deR0Rzs0yc8B6BZjmE0so5lf0EEKE6mXFiZGJ-CmSIE4k7CZHhDKaXhdEkU0dJKuV-ejd4kqor-k_1PORG8" width="100%" alt="Azure Arc SSH brute force detection lab topology" />
+</p>
 
 - The Ubuntu VM remained in my local VMware environment. The Azure Connected Machine Agent registered it as an Azure Arc-enabled server and allowed Azure extensions, including Azure Monitor Agent, to be deployed to it. The Data Collection Rule defined which Linux Syslog events Azure Monitor Agent collected and sent to the Log Analytics Workspace. Microsoft Sentinel analyzed the stored data, while the Microsoft Defender portal provided the interface where I investigated the logs and managed the scheduled analytics rule.
 
