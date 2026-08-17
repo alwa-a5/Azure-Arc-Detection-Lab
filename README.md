@@ -4,18 +4,41 @@
 
 # Network Topology
 
-```mermaid
-flowchart TD
-    A["SSH login attempts"] --> B["Ubuntu VM<br/>VMware home lab"]
-    B --> C["Linux authentication events<br/>Syslog"]
-    B --> D["Azure Arc-enabled server<br/>Connected Machine Agent"]
-    D --> E["Azure Monitor Agent<br/>configured by a DCR"]
-    C --> E
-    E --> F["Log Analytics Workspace"]
-    F --> G["Microsoft Sentinel<br/>in the Defender portal"]
-    G --> H["Scheduled analytics rule"]
-    H --> I["Security alert and incident"]
-```
+<table>
+  <tr>
+    <td align="center" width="140">
+      <b>SSH Attempts</b><br>
+      <sub>Repeated failed logins</sub>
+    </td>
+    <td align="center">→</td>
+    <td align="center" width="170">
+      <img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/ubuntu.svg" alt="Ubuntu" width="48">
+      <img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/vmware.svg" alt="VMware" width="58"><br>
+      <b>Ubuntu VM</b><br>
+      <sub>VMware + Linux Syslog</sub>
+    </td>
+    <td align="center">→</td>
+    <td align="center" width="190">
+      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_Azure_HybridCompute/AzureArcCenter.svg" alt="Azure Arc" width="50">
+      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_Azure_Monitoring/DataCollectionRules.svg" alt="Data Collection Rule" width="50"><br>
+      <b>Azure Arc + AMA</b><br>
+      <sub>Connected Machine Agent + DCR</sub>
+    </td>
+    <td align="center">→</td>
+    <td align="center" width="160">
+      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_OperationsManagementSuite_Workspace/Workspace.svg" alt="Log Analytics Workspace" width="52"><br>
+      <b>Log Analytics</b><br>
+      <sub>Linux Syslog table</sub>
+    </td>
+    <td align="center">→</td>
+    <td align="center" width="190">
+      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_Azure_Security_Insights/SecurityInsightsDashboard.svg" alt="Microsoft Sentinel" width="50">
+      <img src="https://raw.githubusercontent.com/maskati/azure-icons/main/svg/Microsoft_Azure_Security_Insights/Incident.svg" alt="Security incident" width="50"><br>
+      <b>Microsoft Sentinel</b><br>
+      <sub>KQL rule → alert + incident</sub>
+    </td>
+  </tr>
+</table>
 
 - The Ubuntu VM remained in my local VMware environment. The Azure Connected Machine Agent registered it as an Azure Arc-enabled server and allowed Azure extensions, including Azure Monitor Agent, to be deployed to it. The Data Collection Rule defined which Linux Syslog events Azure Monitor Agent collected and sent to the Log Analytics Workspace. Microsoft Sentinel analyzed the stored data, while the Microsoft Defender portal provided the interface where I investigated the logs and managed the scheduled analytics rule.
 
